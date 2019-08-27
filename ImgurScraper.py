@@ -55,7 +55,7 @@ while output_file_name != number_images:
     if r.url == "https://i.imgur.com/removed.png":
         print(f"> Fail! [URL: i.imgur.com/{image_code}.png]")
         fails += 1
-        if fails%25 == 0: #Updates hitrate every 10 fails
+        if fails%10 == 0: #Updates hitrate every 10 fails
             current_time = time.time() # Gets current time for CPM
             ctypes.windll.kernel32.SetConsoleTitleW(f"ImgurScraper [Progress: {output_file_name}/{number_images}] [Hitrate: {round(output_file_name / fails * 100, 4)}%] [CPM: {int((output_file_name + fails) / (current_time - start_time) * 60)}]") # Updates console title
     else:
