@@ -1,23 +1,26 @@
 import requests, os, random, string, time, ctypes
 
 ctypes.windll.kernel32.SetConsoleTitleW("ImgurScraper") # Console Title
-html_file = open("images.html", 'a')
 if not os.path.isdir("Images"):                 # Creates Images dir if not already created
     os.mkdir("Images")
 output_file_name = 0
 fails = 0  # Used for the calculation of hitrate
 while True:
-        try:
-                number_images = int(input("> How many images do you want to scrape?\n> "))
-                break
-        except ValueError:
-                print("> Only numbers!")
+    try:
+        number_images = int(input("> How many images do you want to scrape?\n> "))
+        break
+    except ValueError:
+        print("> Only numbers!")
 while True:
-        try:
-                character_mode = int(input("> Do you want to use 5-character or 7-character scraping mode [5=HIGH HITRATE|7=NEWER IMAGES] ?  (5/7)\n> "))
-                break
-        except ValueError:
-                print("> Answer only 5 or 7!")
+    try:
+        character_mode = int(input("> Do you want to use 5-character or 7-character scraping mode [5=HIGH HITRATE|7=NEWER IMAGES] ?  (5/7)\n> "))
+        if character_mode == 5 or character_mode == 7:
+            break
+        else:
+            print("> Only 5 or 7!")
+    except:
+        print("> Only 5 or 7!")
+
 start_time = time.time() # Starting point for timer
 while output_file_name != number_images:
     image_code = ""
